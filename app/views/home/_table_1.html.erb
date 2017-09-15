@@ -1,0 +1,73 @@
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th colspan="2" class="table-heading">Đồng Con 1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Chỉ số cũ</th>
+      <td>
+        <%= number_field_tag :sub_1_last_index, nil, class: "form-control", readonly: true,
+          id: "sub-1-last-index", value: last_2_month_energy_1[0].quantity %>
+      </td>
+    </tr>
+    <tr>
+      <th>Chỉ số mới</th>
+      <td>
+        <%= number_field_tag :sub_1_current_index, nil, class: "form-control",
+          id: "sub-1-current-index", value: last_2_month_energy_1[1].quantity %>
+      </td>
+    </tr>
+    <tr>
+      <th>Mức tiêu thụ</th>
+      <td class="text-left">
+        <span id="sub-1-quantity">
+          <%= energy_count_1 %>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="no-padding">
+        <table class="table no-margin">
+          <thead>
+            <tr>
+              <th class="text-center">ĐNTT</th>
+              <th class="text-center">Đơn Giá</th>
+              <th class="text-center">Thành Tiền</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% energy_stats_1.each do |stat| %>
+              <tr>
+                <td><%= stat[:count] %></td>
+                <td><%= number_with_precision stat[:price], precision: 0,
+                  separator: ',', delimiter: '.' %></td>
+                <td><%= number_with_precision stat[:cost], precision: 0,
+                  separator: ',', delimiter: '.' %></td>
+              </tr>
+            <% end %>
+            <tr>
+              <td colspan="2">Tổng:</td>
+              <td><%= number_with_precision sum_cost(energy_stats_1), precision: 0,
+                separator: ',', delimiter: '.' %></td>
+            </tr>
+            <tr>
+              <td colspan="2">Thuế GTGT:</td>
+              <td><%= number_with_precision calc_vat(energy_stats_1), precision: 0,
+                separator: ',', delimiter: '.' %></td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <th>Thành tiền:</th>
+      <td class="text-right">
+        <span id="master-costs" class="text-primary">
+          <%= number_with_precision total_cost(energy_stats_1), precision: 0, separator: ',', delimiter: '.' %>
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>

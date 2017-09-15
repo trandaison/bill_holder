@@ -27,9 +27,14 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.14.30'
+gem 'config'
 
 group :development, :test do
   gem 'pry-rails'
+  gem 'dotenv-rails', '~> 2.2', '>= 2.2.1'
+  gem 'awesome_print'
 end
 
 group :development do

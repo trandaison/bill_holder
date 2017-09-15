@@ -1,0 +1,59 @@
+<div class="row">
+  <div class="col-md-12 heading">
+    <p class="category">Tabs with Icons on Card</p>
+    <div class="wrp pull-right">
+      <div class="input-group" id="month-selector">
+        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+        <input type="text" name="month" class="form-control date-picker" data-datepicker-color="primary" value="<%# l Date.current, format: :month_and_year %>" placeholder="Chọn tháng...">
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header">
+      <ul class="nav nav-tabs justify-content-center" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" data-toggle="tab" href="#energy" role="tab">
+            <i class="now-ui-icons business_bulb-63"></i>
+            Energy
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#water" role="tab">
+            <i class="now-ui-icons objects_umbrella-13"></i>
+            Water
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="card-body">
+      <div class="tab-content text-center">
+        <%= render "energy_tab", last_2_month_master_energy: @last_2_month_master_energy,
+          energy_count: @energy_count, energy_stats: @energy_stats,
+          last_2_month_energy_1: @last_2_month_energy_1, energy_count_1: @energy_count_1, energy_stats_1: @energy_stats_1, energy_count_2: @energy_count_2, energy_stats_2: @energy_stats_2 %>
+        <%= render "water_tab" %>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <!-- <button type="button" name="calc" class="btn btn-info">
+            <i class="now-ui-icons arrows-1_cloud-upload-94"></i> Lưu
+          </button> -->
+          <button type="button" name="save" class="btn btn-primary" id="btn-save">
+            <i class="now-ui-icons ui-1_check"></i> Tính và Lưu
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= content_for :custom_html do %>
+  <%= render "passcode_modal" %>
+<% end %>
+
+<%= content_for :custom_js do %>
+  <script type="text/javascript">
+    <%= render 'main.js' %>
+  </script>
+<% end %>

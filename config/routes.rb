@@ -1,3 +1,7 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root 'home#index'
+  namespace :ajax do
+    post '/verify', to: 'pass_codes#verify', as: :verify_pass_code
+    resources :meters, only: :create
+  end
 end

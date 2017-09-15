@@ -1,0 +1,47 @@
+$(document).ready(function() {
+  var verify_url = "<%= ajax_verify_pass_code_path %>";
+  $("#btn-save").on("click", function(e) {
+    $("#passcode-modal").modal("show");
+    $("#passcode-modal").on("shown.bs.modal", function() {
+      $("#pass-code").focus();
+      $("#submit-passcode").on("click", function() {
+        var pass_code = $("#pass-code").val();
+        if (!pass_code) {
+          $("#pass-code").addClass("form-control-danger")
+            .parent()
+            .addClass("has-danger");
+          $("#pass-code").focus();
+          $("#resp-msg").show();
+        } else {
+          $("#resp-msg").hide();
+          $("#pass-code").removeClass("form-control-danger").val("")
+            .parent()
+            .removeClass("has-danger");
+          $.post(verify_url, {"pass_code": pass_code}, null, 'script');
+        }
+      });
+    });
+  });
+
+  $('.date-picker').each(function() {
+    $(this).datepicker({
+      templates: {
+        leftArrow: '<i class="now-ui-icons arrows-1_minimal-left"></i>',
+        rightArrow: '<i class="now-ui-icons arrows-1_minimal-right"></i>'
+      },
+      format: "MM, yyyy",
+      language: "vi",
+      minViewMode: 1,
+      endDate: moment().format("MM, YYYY"),
+      defaultViewDate: moment().format("01/MM/YYYY"),
+    }).on('show', function() {
+      $('.datepicker').addClass('open');
+      datepicker_color = $(this).data('datepicker-color');
+      if (datepicker_color.length != 0) {
+        $('.datepicker').addClass('datepicker-' + datepicker_color + '');
+      }
+    }).on('hide', function() {
+      $('.datepicker').removeClass('open');
+    });
+  });
+});

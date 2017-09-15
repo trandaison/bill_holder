@@ -1,0 +1,24 @@
+apartment_pics:
+  son_tran: "Son Tran"
+  house_owner: "Anh Tuyet"
+energy_prices_master:
+  50: 1484
+  100: 1533
+  200: 1786
+  300: 2242
+  400: 2503
+  1000000: 2587
+energy_prices_sub:
+  25: 1484
+  50: 1533
+  100: 1786
+  150: 2242
+  200: 2503
+  1000000: 2587
+energy_bonus:
+  - 25
+  - 50
+  - 50
+  - 50
+  - 50
+  - 0
