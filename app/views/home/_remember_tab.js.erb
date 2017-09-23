@@ -1,0 +1,44 @@
+var COOKIE_ACTIVE_TAB_KEY = "activeTab=";
+
+function storeTab(tab) {
+  var LIVE_TIME = 90; // will be expired in 90 days.
+  var expDate = new Date();
+  expDate.setTime(expDate.getTime() + LIVE_TIME * 24 * 60 * 60 * 1000);
+  var expires = "expires=" + expDate.toUTCString();
+  document.cookie = COOKIE_ACTIVE_TAB_KEY + tab + ";" + expires + ";path=/";
+}
+
+function getStoredTab() {
+  var cookieData = document.cookie.split(";");
+  for (var i = 0; i < cookieData.length; i++) {
+    var c = cookieData[i];
+    while (c.charAt(0) == " ") {
+      c = c.substring(1);
+    }
+    if (c.indexOf(COOKIE_ACTIVE_TAB_KEY) == 0) {
+      return c.substring(COOKIE_ACTIVE_TAB_KEY.length, c.length);
+    }
+  }
+  return "";
+}
+
+function switchTab(tabID) {
+  var id = "#" + tabID;
+  $(id).tab('show');
+}
+
+$(function() {
+  $(".nav-link").on('click', function() {
+    var previousTab = getStoredTab();
+    var currentTab = $(this).attr("id");
+    if (previousTab === currentTab) {
+      return false;
+    } else {
+      storeTab(currentTab);
+      switchTab(currentTab);
+    }
+  });
+  var DEFAULT_TAB_ID = getStoredTab() || "tab-energy";
+  storeTab(DEFAULT_TAB_ID);
+  switchTab(DEFAULT_TAB_ID);
+});

@@ -1,0 +1,67 @@
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th colspan="2" class="table-heading">Đồng hồ con 1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th class="text-middle">Chỉ số cũ</th>
+      <td>
+        <%= text_field_tag :master_last_index, nil, class: "form-control", readonly: true,
+          id: "master-last-index", value: "-" %>
+      </td>
+    </tr>
+    <tr>
+      <th class="text-middle">Chỉ số mới</th>
+      <td>
+        <%= text_field_tag :master_current_index, nil, class: "form-control", readonly: true,
+          id: "master-current-index", value: "-" %>
+      </td>
+    </tr>
+    <tr>
+      <th>Mức tiêu thụ</th>
+      <td class="text-left">
+        <span id="master-quantity">
+          <%= water_count_1 %>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="no-padding">
+        <table class="table no-margin">
+          <thead>
+            <tr>
+              <th class="text-center text-middle">ĐNTT</th>
+              <th class="text-center text-middle">
+                Đơn Giá<br>
+                <small>(Đã bao gồm VAT,<br>DV. thoát nước và phí BVMT)</small>
+              </th>
+              <th class="text-center text-middle">Thành Tiền</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% water_stats_1.each do |stat| %>
+              <tr>
+                <td><%= stat[:count] %></td>
+                <td><%= number_with_precision stat[:price], precision: 0,
+                  separator: ',', delimiter: '.' %></td>
+                <td><%= number_with_precision stat[:cost], precision: 0,
+                  separator: ',', delimiter: '.' %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <th>Thành tiền:</th>
+      <td class="text-right">
+        <span id="master-costs" class="text-primary">
+          <%= number_with_precision sum_cost(water_stats_1), precision: 0,
+            separator: ',', delimiter: '.' %>
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>

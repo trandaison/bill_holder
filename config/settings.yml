@@ -1,6 +1,7 @@
 apartment_pics:
   son_tran: "Son Tran"
   house_owner: "Anh Tuyet"
+  unknown: "Unknown"
 energy_prices_master:
   50: 1484
   100: 1533
@@ -21,4 +22,16 @@ energy_bonus:
   - 50
   - 50
   - 50
+  - 0
+water_prices_master:
+  10: 4580
+  30: 5488
+  1000000: 6849
+water_prices_sub:
+  5: 4580
+  15: 5488
+  1000000: 6849
+water_bonus:
+  - 5
+  - 10
   - 0

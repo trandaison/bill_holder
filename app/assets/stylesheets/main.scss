@@ -1,5 +1,5 @@
 .section {
-  padding-top: 0;
+  padding-top: 10px;
 }
 
 .heading {
@@ -46,6 +46,10 @@
   color: #555;
 }
 
-.justify-content-center {
+.card-header {
   padding: 0px;
+}
+
+.text-middle {
+  vertical-align: middle !important;
 }

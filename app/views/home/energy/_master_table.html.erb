@@ -6,14 +6,14 @@
   </thead>
   <tbody>
     <tr>
-      <th>Chỉ số cũ</th>
+      <th class="text-middle">Chỉ số cũ</th>
       <td>
         <%= number_field_tag :master_last_index, nil, class: "form-control", readonly: true,
           id: "master-last-index", value: last_2_month_master_energy[0].quantity %>
       </td>
     </tr>
     <tr>
-      <th>Chỉ số mới</th>
+      <th class="text-middle">Chỉ số mới</th>
       <td>
         <%= number_field_tag :master_current_index, nil, class: "form-control",
           id: "master-current-index", value: last_2_month_master_energy[1].quantity %>

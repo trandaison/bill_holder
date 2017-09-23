@@ -1,6 +1,15 @@
 <div class="tab-pane" id="water" role="tabpanel">
-  <p>
-    I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that’s a responsibility that I have, to push possibilities, to show people, this is the level
-    that things could be at. I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at.
-  </p>
+  <div class="row">
+    <div class="col-md-4" id="master-table">
+      <%= render "home/water/master_table", last_2_month_master_water: last_2_month_master_water,
+        water_count: water_count, water_stats: water_stats %>
+    </div>
+    <div class="col-md-4" id="sub-table-1">
+      <%= render "home/water/table_1", water_count_1: water_count_1, water_stats_1: water_stats_1 %>
+    </div>
+    <div class="col-md-4" id="sub-table-2">
+      <%= render "home/water/table_2", last_2_month_water_2: last_2_month_water_2,
+        water_count_2: water_count_2, water_stats_2: water_stats_2 %>
+    </div>
+  </div>
 </div>

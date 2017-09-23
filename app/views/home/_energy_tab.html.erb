@@ -1,15 +1,15 @@
 <div class="tab-pane active" id="energy" role="tabpanel">
   <div class="row">
     <div class="col-md-4" id="master-table">
-      <%= render "master_table", last_2_month_master_energy: last_2_month_master_energy,
+      <%= render "home/energy/master_table", last_2_month_master_energy: last_2_month_master_energy,
         energy_count: energy_count, energy_stats: energy_stats %>
     </div>
     <div class="col-md-4" id="sub-table-1">
-      <%= render "table_1", last_2_month_energy_1: last_2_month_energy_1,
+      <%= render "home/energy/table_1", last_2_month_energy_1: last_2_month_energy_1,
         energy_count_1: energy_count_1, energy_stats_1: energy_stats_1 %>
     </div>
     <div class="col-md-4" id="sub-table-2">
-      <%= render "table_2", energy_count_2: energy_count_2, energy_stats_2: energy_stats_2 %>
+      <%= render "home/energy/table_2", energy_count_2: energy_count_2, energy_stats_2: energy_stats_2 %>
     </div>
   </div>
 </div>
