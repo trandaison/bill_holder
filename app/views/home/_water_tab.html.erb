@@ -1,15 +1,31 @@
 <div class="tab-pane" id="water" role="tabpanel">
   <div class="row">
-    <div class="col-md-4" id="master-table">
-      <%= render "home/water/master_table", last_2_month_master_water: last_2_month_master_water,
-        water_count: water_count, water_stats: water_stats %>
-    </div>
-    <div class="col-md-4" id="sub-table-1">
-      <%= render "home/water/table_1", water_count_1: water_count_1, water_stats_1: water_stats_1 %>
-    </div>
-    <div class="col-md-4" id="sub-table-2">
-      <%= render "home/water/table_2", last_2_month_water_2: last_2_month_water_2,
-        water_count_2: water_count_2, water_stats_2: water_stats_2 %>
-    </div>
+    <% if valid_water %>
+      <div class="col-md-4" id="master-table">
+        <%= render "home/water/master_table", last_2_month_master_water: last_2_month_master_water,
+          water_count: water_count, water_stats: water_stats %>
+      </div>
+      <div class="col-md-4" id="sub-table-1">
+        <%= render "home/water/table_1", water_count_1: water_count_1, water_stats_1: water_stats_1 %>
+      </div>
+      <div class="col-md-4" id="sub-table-2">
+        <%= render "home/water/table_2", last_2_month_water_2: last_2_month_water_2,
+          water_count_2: water_count_2, water_stats_2: water_stats_2 %>
+      </div>
+    <% elsif last_month_water %>
+      <div class="col-md-4" id="master-table">
+        <%= render "home/water_blank_table", meter: last_month_water[:master], heading: "Đồng hồ tổng", type: :master %>
+      </div>
+      <div class="col-md-4" id="sub-table-1">
+        <%= render "home/water_blank_table", meter: last_month_water[:sub_1], heading: "Đồng hồ con 1", type: :sub %>
+      </div>
+      <div class="col-md-4" id="sub-table-2">
+        <%= render "home/water_blank_table", meter: last_month_water[:sub_2], heading: "Đồng hồ con 2", type: :sub %>
+      </div>
+    <% else %>
+      <div class="col-md-12">
+        <p class="text-primary">Không có dữ liệu hoặc có lỗi trong quá trình tính toán.</p>
+      </div>
+    <% end %>
   </div>
 </div>

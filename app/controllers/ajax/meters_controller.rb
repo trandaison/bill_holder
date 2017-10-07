@@ -2,6 +2,7 @@ class Ajax::MetersController < ApplicationController
   before_action :verify_passcode
 
   def create
+    month = nil
     params[:meters].each do |i, meter_p|
       m_params = meter_params meter_p
       date = m_params[:date].to_date.beginning_of_month
@@ -11,8 +12,9 @@ class Ajax::MetersController < ApplicationController
         meter.date = date
         meter.save
       end
+      month = date.to_datetime
     end
-    render js: "window.location.href = '/';"
+    render js: "window.location.href = '/?month=#{month}';"
   end
 
   private

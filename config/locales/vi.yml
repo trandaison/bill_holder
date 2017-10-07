@@ -1,0 +1,4 @@
+vi:
+  date:
+    formats:
+      month_and_year: "Tháng %m, %Y"

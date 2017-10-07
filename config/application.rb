@@ -30,5 +30,8 @@ module BillHolder
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+    config.time_zone = "Hanoi"
+    config.i18n.default_locale = :vi
+    I18n.config.available_locales = :vi
   end
 end

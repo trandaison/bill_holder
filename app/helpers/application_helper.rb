@@ -44,22 +44,35 @@ module ApplicationHelper
     sum_cost(array) + calc_vat(array)
   end
 
-  def recalc array_1, array_2, total_1, total_2
+  def recalc array_1, array_2, total_1, total_2, type: :energy
     if array_1.size > array_2.size
-      array_1 = split_energy total_1, meter: :sub, looper: generate_new_energy_prices(array_1, array_2)
+      array_1 = split_energy total_1, meter: :sub, looper: generate_new_energy_prices(array_1, array_2, type: type)
     else
-      array_2 = split_energy total_2, meter: :sub, looper: generate_new_energy_prices(array_2, array_1)
+      array_2 = split_energy total_2, meter: :sub, looper: generate_new_energy_prices(array_2, array_1, type: type)
     end
     [array_1, array_2]
   end
 
-  def generate_new_energy_prices array_large, array_small
+  def generate_new_energy_prices array_large, array_small, type: :energy
     bonus = array_small.last[:remainder]
-    prices = Settings.energy_prices_sub.to_a
+    prices = Settings.try("#{type}_prices_sub").to_a
     first_index = array_small.size - 1
-    last_index = Settings.energy_prices_sub.count - 1
+    last_index = Settings.try("#{type}_prices_sub").count - 1
     (first_index..last_index).each do |i|
-      bonus = (i == first_index) ? bonus : Settings.energy_bonus[i]
+      bonus = (i == first_index) ? bonus : Settings.try("#{type}_bonus")[i]
+      new_key = prices[i][0].to_s.to_i + bonus
+      prices[i][0] = new_key.to_s.to_sym
+    end
+    prices.to_h
+  end
+
+  def generate_new_water_prices array_large, array_small
+    bonus = array_small.last[:remainder]
+    prices = Settings.water_prices_sub.to_a
+    first_index = array_small.size - 1
+    last_index = Settings.water_prices_sub.count - 1
+    (first_index..last_index).each do |i|
+      bonus = (i == first_index) ? bonus : Settings.water_bonus[i]
       new_key = prices[i][0].to_s.to_i + bonus
       prices[i][0] = new_key.to_s.to_sym
     end

@@ -4,8 +4,10 @@
     <div class="wrp pull-right">
       <div class="input-group" id="month-selector">
         <span class="input-group-addon"><i class="fa fa-calendar" style="color: #9A9A9A;"></i></span>
-        <input type="text" name="month" class="form-control date-picker" data-datepicker-color="primary" value="<%# l Date.current, format: :month_and_year %>" placeholder="Chọn tháng...">
+        <input type="text" name="month-display" class="form-control date-picker" data-datepicker-color="primary" value="<%# l Date.current, format: :month_and_year %>" placeholder="Chọn tháng...">
       </div>
+      <input type="hidden" name="month" value="<%= l params[:month].to_date, format: :month_and_year %>" id="month-value">
+      <input type="hidden" name="month" value="<%= params[:month].to_datetime %>" id="current-date">
     </div>
   </div>
   <div class="card">
@@ -30,11 +32,13 @@
         <%= render "energy_tab", last_2_month_master_energy: @last_2_month_master_energy,
           energy_count: @energy_count, energy_stats: @energy_stats,
           last_2_month_energy_1: @last_2_month_energy_1, energy_count_1: @energy_count_1,
-          energy_stats_1: @energy_stats_1, energy_count_2: @energy_count_2, energy_stats_2: @energy_stats_2 %>
+          energy_stats_1: @energy_stats_1, energy_count_2: @energy_count_2,
+          energy_stats_2: @energy_stats_2, valid_energy: @valid_energy, last_month_energy: @last_month_energy %>
         <%= render "water_tab",last_2_month_master_water: @last_2_month_master_water,
           water_count: @water_count, water_stats: @water_stats,
           last_2_month_water_2: @last_2_month_water_2, water_count_1: @water_count_1,
-          water_stats_1: @water_stats_1, water_count_2: @water_count_2, water_stats_2: @water_stats_2 %>
+          water_stats_1: @water_stats_1, water_count_2: @water_count_2,
+          water_stats_2: @water_stats_2, valid_water: @valid_water, last_month_water: @last_month_water %>
       </div>
     </div>
     <div class="card-footer">
@@ -43,7 +47,7 @@
           <!-- <button type="button" name="calc" class="btn btn-info">
             <i class="now-ui-icons arrows-1_cloud-upload-94"></i> Lưu
           </button> -->
-          <button type="button" name="save" class="btn btn-primary" id="btn-save">
+          <button type="button" name="save" class="btn btn-primary" id="btn-save" style="display: none;">
             <i class="now-ui-icons ui-1_check"></i> Tính và Lưu
           </button>
         </div>
@@ -58,7 +62,7 @@
 
 <%= content_for :custom_js do %>
   <script type="text/javascript">
-    <%= render 'main.js' %>
     <%= render 'remember_tab.js' %>
+    <%= render 'main.js' %>
   </script>
 <% end %>

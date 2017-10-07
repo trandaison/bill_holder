@@ -3,23 +3,26 @@
   $("#passcode-modal").modal("hide");
   var pass_code = "<%= params[:pass_code] %>";
   var meter_url = "<%= ajax_meters_path %>";
+  var meter_type = getStoredTab() === "tab-energy" ? "energy" : "water";
+  var sub_pic = getStoredTab() === "tab-energy" ? "<%= Settings.apartment_pics.son_tran %>" : "<%= Settings.apartment_pics.unknown %>";
+  var date = $("#current-date").val();
   var data = {
     pass_code: pass_code,
     meters: [
       {
         "meter": {
           "pic": "<%= Settings.apartment_pics.house_owner %>",
-          "quantity": $("#master-current-index").val(),
-          "meter_type": "energy",
-          "date": Date(),
+          "quantity": $(".master-current-index:visible").val(),
+          "meter_type": meter_type,
+          "date": date,
         }
       },
       {
         "meter": {
-          "pic": "<%= Settings.apartment_pics.son_tran %>",
-          "quantity": $("#sub-1-current-index").val(),
-          "meter_type": "energy",
-          "date": Date(),
+          "pic": sub_pic,
+          "quantity": $(".sub-current-index:visible").val(),
+          "meter_type": meter_type,
+          "date": date,
         }
       }
     ]

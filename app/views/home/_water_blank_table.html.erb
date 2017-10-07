@@ -1,0 +1,61 @@
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th colspan="2" class="table-heading"><%= heading %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th class="text-middle">Chỉ số cũ</th>
+      <td>
+        <% if meter %>
+          <%= number_field_tag :master_last_index, nil, class: "form-control", readonly: true,
+            id: "#{type}-last-index", value: meter.quantity %>
+        <% else %>
+          <%= text_field_tag :master_last_index, nil, class: "form-control",
+            id: "#{type}-last-index", value: "-", readonly: true %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <th class="text-middle">Chỉ số mới</th>
+      <td>
+        <% if meter %>
+          <%= number_field_tag :master_current_index, nil, class: "form-control #{type}-current-index" %>
+        <% else %>
+          <%= text_field_tag :master_current_index, nil, class: "form-control",
+            id: "#{type}-current-index", value: "-", readonly: true %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <th>Mức tiêu thụ</th>
+      <td class="text-left"></td>
+    </tr>
+    <tr>
+      <td colspan="2" class="no-padding">
+        <table class="table no-margin">
+          <thead>
+            <tr>
+              <th class="text-center text-middle">ĐNTT</th>
+              <th class="text-center text-middle">
+                Đơn Giá<br>
+                <small>(Đã bao gồm VAT,<br>DV. thoát nước và phí BVMT)</small>
+              </th>
+              <th class="text-center text-middle">Thành Tiền</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td colspan="3" class="text-muted">Chưa có dữ liệu</td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <th>Thành tiền:</th>
+      <td class="text-right"></td>
+    </tr>
+  </tbody>
+</table>

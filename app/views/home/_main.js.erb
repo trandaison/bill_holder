@@ -1,4 +1,14 @@
+function hideBtnSave() {
+  var noData = $(".tab-pane.active").find("p.text-primary").length > 0;
+  if (noData) {
+    $("#btn-save").hide();
+  } else {
+    $("#btn-save").show();
+  }
+}
+$(document).ready(hideBtnSave);
 $(document).ready(function() {
+  $(".nav-link").on("click", hideBtnSave);
   var verify_url = "<%= ajax_verify_pass_code_path %>";
   $("#btn-save").on("click", function(e) {
     $("#passcode-modal").modal("show");
@@ -22,6 +32,7 @@ $(document).ready(function() {
       });
     });
   });
+  $(".date-picker").val($("#month-value").val());
 
   $('.date-picker').each(function() {
     $(this).datepicker({
@@ -33,7 +44,7 @@ $(document).ready(function() {
       language: "vi",
       minViewMode: 1,
       endDate: moment().format("MM, YYYY"),
-      defaultViewDate: moment().format("01/MM/YYYY"),
+      defaultViewDate: moment("<%= params[:month].to_datetime %>").format("01/MM/YYYY"),
     }).on('show', function() {
       $('.datepicker').addClass('open');
       datepicker_color = $(this).data('datepicker-color');
@@ -42,6 +53,10 @@ $(document).ready(function() {
       }
     }).on('hide', function() {
       $('.datepicker').removeClass('open');
+    }).on('changeDate', function(e) {
+      var month = e.date;
+      var path = "<%= root_path %>" + "?month=" + month;
+      window.location = path;
     });
   });
 });
