@@ -42,7 +42,7 @@ $(document).ready(function() {
       // format: "MM, yyyy",
       language: "vi",
       minViewMode: 1,
-      endDate: moment().format("MM, YYYY"),
+      // endDate: moment().format("MM, YYYY"),
       defaultDate: moment("<%= params[:month].to_datetime %>").format("01/MM/YYYY"),
     }).on('show', function() {
       $('.datepicker').addClass('open');
@@ -55,13 +55,28 @@ $(document).ready(function() {
     }).on('changeDate', function(e) {
       var month = e.date;
       var path = "<%= root_path %>" + "?month=" + month;
-      window.location = path;
+      var currentMonth = moment(moment().format("YYYY-MM-01T00:00:00+07:00"));
+      if (moment(month) <= currentMonth) {
+        window.location = path;
+      } else {
+        alert("Chưa có dữ liệu cho Tháng " + moment(month).format("MM") + ".");
+      }
+    }).on("dp.change", function(e) {
+
     });
   });
 
   $("#calc-reverse").on("click", function() {
     if ($("#cost").val()) {
-      $.post($("#reverse-form").attr("action"), $("#reverse-form").serialize(), fillMeter, "json");
+      // $.post($("#reverse-form").attr("action"), $("#reverse-form").serialize(), fillMeter, "json");
+      $.ajax({
+        url: $("#reverse-form").attr("action"),
+        method: "POST",
+        data: $("#reverse-form").serialize(),
+        dataType: "json",
+        success: fillMeter,
+        error: showError
+      });
     } else {
       $("#cost").addClass("fomr-control-invalid");
       $("#cost").focus();
@@ -71,5 +86,11 @@ $(document).ready(function() {
 });
 
 function fillMeter(data) {
+  $("#error-msg").html("");
   $("#reverse-meter").val(data.meter);
+}
+
+function showError() {
+  $("#reverse-meter").val(-1);
+  $("#error-msg").html("Lỗi! Kiểm tra lại giá tiền.");
 }

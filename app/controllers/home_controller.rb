@@ -17,10 +17,9 @@ class HomeController < ApplicationController
 
     begin
       temp = [@water_stats_1, @water_stats_2]
-      if @water_stats_1.count > @water_stats_2.count && @water_stats_2.last[:remainder]
+      if (@water_stats_1.count > @water_stats_2.count && @water_stats_2.last[:remainder]) ||
+        (@water_stats_1.count < @water_stats_2.count && @water_stats_1.last[:remainder])
         temp = recalc @water_stats_1, @water_stats_2, @water_count_1, @water_count_2, type: :water
-      elsif @water_stats_1.count < @water_stats_2.count  && @water_stats_1.last[:remainder]
-        temp = recalc @water_stats_2, @water_stats_1, @water_count_2, @water_count_1, type: :water
       end
       @water_stats_1 = temp[0]
       @water_stats_2 = temp[1]

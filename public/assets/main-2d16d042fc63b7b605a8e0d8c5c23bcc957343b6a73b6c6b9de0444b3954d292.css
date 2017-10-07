@@ -1,0 +1,67 @@
+/* line 1, /home/sontd/workspace/bill_holder/app/assets/stylesheets/main.scss */
+.section {
+  padding-top: 10px;
+}
+
+/* line 5, /home/sontd/workspace/bill_holder/app/assets/stylesheets/main.scss */
+.heading {
+  padding: 0;
+  margin-bottom: 10px;
+}
+/* line 8, /home/sontd/workspace/bill_holder/app/assets/stylesheets/main.scss */
+.heading p {
+  float: left;
+  float: left;
+  margin-bottom: 0;
+  height: 38px;
+  padding: 10px 0px;
+}
+
+/* line 17, /home/sontd/workspace/bill_holder/app/assets/stylesheets/main.scss */
+#month-selector {
+  width: 180px;
+  margin-bottom: 0;
+}
+
+/* line 22, /home/sontd/workspace/bill_holder/app/assets/stylesheets/main.scss */
+.no-padding {
+  padding: 0 !important;
+}
+
+/* line 26, /home/sontd/workspace/bill_holder/app/assets/stylesheets/main.scss */
+.no-margin {
+  margin: 0 !important;
+}
+
+/* line 30, /home/sontd/workspace/bill_holder/app/assets/stylesheets/main.scss */
+#master-quantity {
+  padding-left: 12px;
+  font-weight: bold;
+}
+
+/* line 35, /home/sontd/workspace/bill_holder/app/assets/stylesheets/main.scss */
+#master-costs {
+  padding-right: 15%;
+  font-weight: bold;
+}
+
+/* line 40, /home/sontd/workspace/bill_holder/app/assets/stylesheets/main.scss */
+.table-heading {
+  text-transform: uppercase;
+  text-align: center;
+}
+
+/* line 45, /home/sontd/workspace/bill_holder/app/assets/stylesheets/main.scss */
+.card {
+  color: #555;
+}
+
+/* line 49, /home/sontd/workspace/bill_holder/app/assets/stylesheets/main.scss */
+.card-header {
+  padding: 0px;
+}
+
+/* line 53, /home/sontd/workspace/bill_holder/app/assets/stylesheets/main.scss */
+.text-middle {
+  vertical-align: middle !important;
+}

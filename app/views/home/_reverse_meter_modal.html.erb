@@ -8,6 +8,7 @@
         <h4 class="title title-up">Tính Mức Tiêu Thụ</h4>
       </div>
       <div class="modal-body">
+        <p class="text-danger" id="error-msg"></p>
         <%= form_tag :ajax_reverse_meter, remote: true, id: "reverse-form" do |f| %>
           <%= select_tag :type, options_for_select({"Đồng hồ điện": "energy", "Đồng hồ nước": "water"}), class: "form-control" %>
           <%= number_field_tag :cost, nil, class: "form-control", placeholder: "Giá tiền" %>

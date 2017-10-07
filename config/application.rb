@@ -16,8 +16,8 @@ require "sprockets/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-Dotenv::Railtie.load
-HOSTNAME = ENV['HOSTNAME']
+# Dotenv::Railtie.load
+# HOSTNAME = ENV['HOSTNAME']
 
 module BillHolder
   class Application < Rails::Application

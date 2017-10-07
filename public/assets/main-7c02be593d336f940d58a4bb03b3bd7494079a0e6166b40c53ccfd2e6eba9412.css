@@ -1,0 +1,100 @@
+/* line 1, /home/sontd/workspace/bill_holder/app/assets/stylesheets/main.scss */
+.section {
+  padding-top: 10px;
+}
+
+/* line 5, /home/sontd/workspace/bill_holder/app/assets/stylesheets/main.scss */
+.heading {
+  padding: 0;
+  margin-bottom: 10px;
+}
+/* line 8, /home/sontd/workspace/bill_holder/app/assets/stylesheets/main.scss */
+.heading p {
+  float: left;
+  float: left;
+  margin-bottom: 0;
+  height: 38px;
+  padding: 10px 0px;
+}
+/* line 15, /home/sontd/workspace/bill_holder/app/assets/stylesheets/main.scss */
+.heading .time {
+  color: #9A9A9A;
+}
+/* line 18, /home/sontd/workspace/bill_holder/app/assets/stylesheets/main.scss */
+.heading .category {
+  margin-right: 15px;
+}
+
+/* line 23, /home/sontd/workspace/bill_holder/app/assets/stylesheets/main.scss */
+#month-selector {
+  width: 180px;
+  margin-bottom: 0;
+}
+
+/* line 28, /home/sontd/workspace/bill_holder/app/assets/stylesheets/main.scss */
+.no-padding {
+  padding: 0 !important;
+}
+
+/* line 32, /home/sontd/workspace/bill_holder/app/assets/stylesheets/main.scss */
+.no-margin {
+  margin: 0 !important;
+}
+
+/* line 36, /home/sontd/workspace/bill_holder/app/assets/stylesheets/main.scss */
+#master-quantity {
+  padding-left: 12px;
+  font-weight: bold;
+}
+
+/* line 41, /home/sontd/workspace/bill_holder/app/assets/stylesheets/main.scss */
+#master-costs {
+  padding-right: 15%;
+  font-weight: bold;
+}
+
+/* line 46, /home/sontd/workspace/bill_holder/app/assets/stylesheets/main.scss */
+.table-heading {
+  text-transform: uppercase;
+  text-align: center;
+}
+
+/* line 51, /home/sontd/workspace/bill_holder/app/assets/stylesheets/main.scss */
+.card {
+  color: #555;
+}
+
+/* line 55, /home/sontd/workspace/bill_holder/app/assets/stylesheets/main.scss */
+.card-header {
+  padding: 0px;
+}
+
+/* line 59, /home/sontd/workspace/bill_holder/app/assets/stylesheets/main.scss */
+.text-middle {
+  vertical-align: middle !important;
+}
+
+/* line 64, /home/sontd/workspace/bill_holder/app/assets/stylesheets/main.scss */
+#reverse_meter_modal .form-control {
+  width: 30%;
+  height: 38px;
+  float: left;
+}
+/* line 69, /home/sontd/workspace/bill_holder/app/assets/stylesheets/main.scss */
+#reverse_meter_modal .form-control:nth-child(3) {
+  margin: 0 22px;
+}
+/* line 74, /home/sontd/workspace/bill_holder/app/assets/stylesheets/main.scss */
+#reverse_meter_modal .fomr-control-invalid {
+  border: 1px solid red;
+}
+
+/* line 80, /home/sontd/workspace/bill_holder/app/assets/stylesheets/main.scss */
+.alert-danger a {
+  font-weight: bold;
+  color: #fff;
+}
+/* line 84, /home/sontd/workspace/bill_holder/app/assets/stylesheets/main.scss */
+.alert-danger .price-changes {
+  margin: 0;
+}
