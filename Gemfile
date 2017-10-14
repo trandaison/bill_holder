@@ -35,6 +35,8 @@ group :development, :test do
   gem 'pry-rails'
   gem 'dotenv-rails', '~> 2.2', '>= 2.2.1'
   gem 'awesome_print'
+  # Use sqlite3 as the database for Active Record
+  gem 'sqlite3'
 end
 
 group :development do

@@ -7,7 +7,7 @@ class Ajax::MetersController < ApplicationController
       m_params = meter_params meter_p
       date = m_params[:date].to_date.beginning_of_month
       if (apartment = Apartment.find_by pic: meter_p[:meter][:pic])
-        meter = apartment.meters.find_or_initialize_by date: date
+        meter = apartment.meters.find_or_initialize_by date: date, meter_type: m_params[:meter_type]
         meter.assign_attributes m_params
         meter.date = date
         meter.save
