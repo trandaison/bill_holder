@@ -59,4 +59,18 @@ $(document).ready(function() {
       window.location = path;
     });
   });
+
+  $("#calc-reverse").on("click", function() {
+    if ($("#cost").val()) {
+      $.post($("#reverse-form").attr("action"), $("#reverse-form").serialize(), fillMeter, "json");
+    } else {
+      $("#cost").addClass("fomr-control-invalid");
+      $("#cost").focus();
+      return false;
+    }
+  });
 });
+
+function fillMeter(data) {
+  $("#reverse-meter").val(data.meter);
+}

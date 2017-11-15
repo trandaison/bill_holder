@@ -1,5 +1,5 @@
 class Ajax::MetersController < ApplicationController
-  before_action :verify_passcode
+  before_action :verify_passcode, only: :create
 
   def create
     month = nil
@@ -17,6 +17,11 @@ class Ajax::MetersController < ApplicationController
     render js: "window.location.href = '/?month=#{month}';"
   end
 
+  def reverse
+    meter = reverse_from_cost params[:cost].to_i, type: params[:type]
+    render json: {meter: meter}, status: 200
+  end
+
   private
   def verify_passcode
     render js: "alert('Sai Pass code!');" unless params[:pass_code] == ENV['PASS_CODE']
@@ -24,5 +29,25 @@ class Ajax::MetersController < ApplicationController
 
   def meter_params meter
     meter.require(:meter).permit :apartment_id, :meter_type, :date, :quantity
+  end
+
+  def reverse_from_cost cost, type: :energy
+    vat = 1.1
+    cost_without_vat = cost / vat
+    first_part = Settings.send("#{type}_price_thresholds").to_h.select {|k, v| v <= cost_without_vat.round}
+    last_threshold = first_part.keys.last.to_s.to_i
+    last_cost = first_part.values.last || 0
+    remaining_cost = cost_without_vat - last_cost
+    remaining_cost = {min: remaining_cost - Settings.delta, max: remaining_cost + Settings.delta}
+    price = Settings.send("#{type}_prices_master").try next_threshold(last_threshold, type: type)
+    index = 0
+    index += 1 until (index * price).between?(remaining_cost[:min], remaining_cost[:max])
+    last_threshold + index
+  end
+
+  def next_threshold current, type: :energy
+    thresholds = Settings.send("#{type}_price_thresholds").keys.map {|val| val.to_s.to_i}
+    next_index = thresholds.index(current) + 1
+    thresholds[next_index].to_s
   end
 end

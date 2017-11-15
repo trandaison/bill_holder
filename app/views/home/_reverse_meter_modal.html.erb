@@ -1,0 +1,23 @@
+<div class="modal fade" id="reverse_meter_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header justify-content-center">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+          <i class="now-ui-icons ui-1_simple-remove"></i>
+        </button>
+        <h4 class="title title-up">Tính Mức Tiêu Thụ</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_tag :ajax_reverse_meter, remote: true, id: "reverse-form" do |f| %>
+          <%= select_tag :type, options_for_select({"Đồng hồ điện": "energy", "Đồng hồ nước": "water"}), class: "form-control" %>
+          <%= number_field_tag :cost, nil, class: "form-control", placeholder: "Giá tiền" %>
+          <%= number_field_tag :meter, nil, class: "form-control", placeholder: "Chỉ số cuối", readonly: true, id: "reverse-meter" %>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+        <button type="button" class="btn btn-danger" id="calc-reverse">Tính</button>
+      </div>
+    </div>
+  </div>
+</div>

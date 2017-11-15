@@ -53,3 +53,19 @@
 .text-middle {
   vertical-align: middle !important;
 }
+
+#reverse_meter_modal {
+  .form-control {
+    width: 30%;
+    height: 38px;
+    float: left;
+
+    &:nth-child(3) {
+      margin: 0 22px;
+    }
+  }
+
+  .fomr-control-invalid {
+    border: 1px solid red;
+  }
+}

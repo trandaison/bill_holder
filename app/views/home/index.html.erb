@@ -44,9 +44,9 @@
     <div class="card-footer">
       <div class="row">
         <div class="col-md-12 text-center">
-          <!-- <button type="button" name="calc" class="btn btn-info">
-            <i class="now-ui-icons arrows-1_cloud-upload-94"></i> Lưu
-          </button> -->
+          <button type="button" name="calc" class="btn btn-info" data-toggle="modal" data-target="#reverse_meter_modal">
+            <i class="fa fa-calculator"></i> Tính mức tiêu thụ
+          </button>
           <button type="button" name="save" class="btn btn-primary" id="btn-save" style="display: none;">
             <i class="now-ui-icons ui-1_check"></i> Tính và Lưu
           </button>
@@ -58,6 +58,7 @@
 
 <%= content_for :custom_html do %>
   <%= render "passcode_modal" %>
+  <%= render "reverse_meter_modal" %>
 <% end %>
 
 <%= content_for :custom_js do %>
