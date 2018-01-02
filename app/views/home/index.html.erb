@@ -1,6 +1,7 @@
 <div class="row">
   <div class="col-md-12 heading">
     <p class="category">Thông Tin Tiền Điện và Nước</p>
+    <p class="time">Từ <%= t("date.period.months", start: l(@month_range[1], format: :beginning_of_month), end: l(@month_range[0], format: :beginning_of_month), year: @month_range[0].try(:year)) %></p>
     <div class="wrp pull-right">
       <div class="input-group" id="month-selector">
         <span class="input-group-addon"><i class="fa fa-calendar" style="color: #9A9A9A;"></i></span>
@@ -10,6 +11,17 @@
       <input type="hidden" name="month" value="<%= params[:month].to_datetime %>" id="current-date">
     </div>
   </div>
+  <% if notify_changes? %>
+    <div class="warning-message">
+      <div class="alert alert-danger">
+        <p class="price-changes">
+          Từ ngày <strong>01/12/2017</strong>, điện lực đà nẵng áp dụng giá bán lẻ mới cho điện sinh hoạt, <a href="https://pcdanang.cpc.vn/tabid/54/TopicId/160/ItemId/4227/Default.aspx" target="_blank">Bấm vào đây để xem chi tiết.</a><br>
+          Do đó thông tin tiền điện từ tháng 12/2017 trở về trước không còn hiển thị chính xác nữa. Để xem thông tin tiền điện từ tháng 8 - 12 năm 2017, <a href="https://goo.gl/TWULLd" target="_blank">vui lòng xem ở đây</a>.
+        </p>
+        <a href="javascript:void(0);"  data-toggle="modal" data-target="#new_energy_price_modal">>> So sánh nhanh</a>
+      </div>
+    </div>
+  <% end %>
   <div class="card">
     <div class="card-header">
       <ul class="nav nav-tabs nav-tabs-neutral justify-content-center" role="tablist" data-background-color="orange">
@@ -59,6 +71,7 @@
 <%= content_for :custom_html do %>
   <%= render "passcode_modal" %>
   <%= render "reverse_meter_modal" %>
+  <%= render "new_energy_price_modal" %>
 <% end %>
 
 <%= content_for :custom_js do %>

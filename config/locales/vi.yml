@@ -2,3 +2,6 @@ vi:
   date:
     formats:
       month_and_year: "Tháng %m, %Y"
+      beginning_of_month: "05/%m"
+    period:
+      months: "%{start} ~ %{end}, %{year}"

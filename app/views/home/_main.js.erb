@@ -33,18 +33,17 @@ $(document).ready(function() {
     });
   });
   $(".date-picker").val($("#month-value").val());
-
   $('.date-picker').each(function() {
     $(this).datepicker({
       templates: {
         leftArrow: '<i class="now-ui-icons arrows-1_minimal-left"></i>',
         rightArrow: '<i class="now-ui-icons arrows-1_minimal-right"></i>'
       },
-      format: "MM, yyyy",
+      // format: "MM, yyyy",
       language: "vi",
       minViewMode: 1,
       endDate: moment().format("MM, YYYY"),
-      defaultViewDate: moment("<%= params[:month].to_datetime %>").format("01/MM/YYYY"),
+      defaultDate: moment("<%= params[:month].to_datetime %>").format("01/MM/YYYY"),
     }).on('show', function() {
       $('.datepicker').addClass('open');
       datepicker_color = $(this).data('datepicker-color');

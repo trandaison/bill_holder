@@ -78,4 +78,9 @@ module ApplicationHelper
     end
     prices.to_h
   end
+
+  def notify_changes?
+    from_date = "01/12/2017".to_datetime
+    (Time.current <= from_date + 2.months) || (params[:month] <= from_date)
+  end
 end

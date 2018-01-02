@@ -2,6 +2,7 @@ class HomeController < ApplicationController
   before_action :check_date, :load_master_meter, :load_sub_meter_1, :load_sub_meter_2
 
   def index
+    @month_range = month_range
     begin
       temp = [@energy_stats_1, @energy_stats_2]
       if (@energy_stats_1.count > @energy_stats_2.count && @energy_stats_1.last[:remainder]) ||
