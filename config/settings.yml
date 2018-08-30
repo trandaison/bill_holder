@@ -47,3 +47,7 @@ water_price_thresholds:
   15: 105220
   1000000: 6849105220
 delta: 500
+models:
+  User:
+    - name
+    - email

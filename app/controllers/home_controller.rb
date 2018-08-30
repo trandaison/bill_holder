@@ -1,7 +1,11 @@
+require "./lib/api/error"
+
 class HomeController < ApplicationController
   before_action :check_date, :load_master_meter, :load_sub_meter_1, :load_sub_meter_2
 
   def index
+    raise Api::Error, "first"
+
     @month_range = month_range
     begin
       temp = [@energy_stats_1, @energy_stats_2]
